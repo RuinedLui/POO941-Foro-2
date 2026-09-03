@@ -1,10 +1,13 @@
-/**
- * Clase base que representa un vehiculo generico del sistema
- * de gestion de AutoMundo S.A. de C.V.
- *
- * Las subclases Automovil, Motocicleta y Camion heredan de esta clase
- * y agregan sus propios atributos particulares.
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/**
+ *
+ * @author luise
+ */
+
 public class Vehiculo {
 
     // Atributos comunes a todos los tipos de vehiculo (ver Tabla 1)
@@ -64,11 +67,6 @@ public class Vehiculo {
         this.precio = precio;
     }
 
-    /**
-     * Representacion en texto del vehiculo. Las subclases pueden
-     * sobreescribir este metodo (@Override) para agregar sus
-     * atributos propios, llamando a super.toString().
-     */
     @Override
     public String toString() {
         return "Codigo: " + codigo +
