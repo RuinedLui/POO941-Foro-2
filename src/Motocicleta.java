@@ -1,12 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+public class Motocicleta extends Vehiculo {
 
-/**
- *
- * @author luise
- */
-class Motocicleta {
-    
+    private int cilindraje;
+    private String tipoMotocicleta;
+
+    public Motocicleta(String codigo, String marca, String modelo, int anio, double precio,
+                       int cilindraje, String tipoMotocicleta) {
+
+        super(codigo, marca, modelo, anio, precio);
+
+        this.cilindraje = cilindraje;
+        this.tipoMotocicleta = tipoMotocicleta;
+    }
+    public int getCilindraje() {
+    return cilindraje;
+}
+
+public void setCilindraje(int cilindraje) {
+    this.cilindraje = cilindraje;
+}
+
+public String getTipoMotocicleta() {
+    return tipoMotocicleta;
+}
+
+public void setTipoMotocicleta(String tipoMotocicleta) {
+    this.tipoMotocicleta = tipoMotocicleta;
+}
+@Override
+public String toString() {
+    return super.toString() +
+           "\nCilindraje: " + cilindraje +
+           "\nTipo de motocicleta: " + tipoMotocicleta;
+}
 }
