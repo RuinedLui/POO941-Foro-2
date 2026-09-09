@@ -1,25 +1,66 @@
-// Subclase Automovil.java
-public class Automovil extends Vehiculo {
-    private int cantidadPuertas;
-    private String tipoCombustible;
+package automundosa;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author luise
+ */
+
+public class Vehiculo {
+
+    // Atributos comunes a todos los tipos de vehiculo (ver Tabla 1)
+    private String codigo;
+    private String marca;
+    private String modelo;
+    private int anio;
     private double precio;
 
-    public Automovil(String codigo, String marca, String modelo, int anio, double precio, int cantidadPuertas, String tipoCombustible) {
-        super(codigo, marca, modelo, anio);
+    // Constructor
+    public Vehiculo(String codigo, String marca, String modelo, int anio, double precio) {
+        this.codigo = codigo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anio = anio;
         this.precio = precio;
-        this.cantidadPuertas = cantidadPuertas;
-        this.tipoCombustible = tipoCombustible;
-    }
-
-    @Override
-    public void mostrarInfo() {
-        super.mostrarInfo();
-        System.out.println("Precio: $" + precio);
-        System.out.println("Cantidad de puertas: " + cantidadPuertas);
-        System.out.println("Tipo de combustible: " + tipoCombustible);
     }
 
     // Getters y Setters
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -28,20 +69,12 @@ public class Automovil extends Vehiculo {
         this.precio = precio;
     }
 
-    public int getCantidadPuertas() {
-        return cantidadPuertas;
-    }
-
-    public void setCantidadPuertas(int cantidadPuertas) {
-        this.cantidadPuertas = cantidadPuertas;
-    }
-
-    public String getTipoCombustible() {
-        return tipoCombustible;
-    }
-
-    public void setTipoCombustible(String tipoCombustible) {
-        this.tipoCombustible = tipoCombustible;
+    @Override
+    public String toString() {
+        return "Codigo: " + codigo +
+                "\nMarca: " + marca +
+                "\nModelo: " + modelo +
+                "\nAnio: " + anio +
+                "\nPrecio: $" + precio;
     }
 }
-

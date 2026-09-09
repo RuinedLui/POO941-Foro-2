@@ -1,3 +1,7 @@
+package automundosa;
+
+
+
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
@@ -46,7 +50,17 @@ public class Main {
                       "6. Eliminar vehículo\n" +
                       "7. Salir\n" +
                       "Seleccione una opción:";
-        return Integer.parseInt(JOptionPane.showInputDialog(menu));
+        try {
+            String entrada = JOptionPane.showInputDialog(menu);
+            if (entrada == null) {
+                // El usuario cerró el diálogo o presionó Cancelar
+                return 7;
+            }
+            return Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Ingrese un número de opción válido");
+            return 0;
+        }
     }
 
     private static void registrarAutomovil() {
@@ -100,11 +114,8 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Camión registrado exitosamente");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
-<<<<<<< HEAD
-=======
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error de Validación", JOptionPane.WARNING_MESSAGE);
->>>>>>> origin/Marlon
         }
     }
 
@@ -181,8 +192,4 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se encontró un vehículo con ese código");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/Marlon
