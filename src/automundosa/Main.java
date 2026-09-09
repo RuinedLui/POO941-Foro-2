@@ -100,6 +100,11 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Camión registrado exitosamente");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
+<<<<<<< HEAD
+=======
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de Validación", JOptionPane.WARNING_MESSAGE);
+>>>>>>> origin/Marlon
         }
     }
 
@@ -176,4 +181,8 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se encontró un vehículo con ese código");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/Marlon

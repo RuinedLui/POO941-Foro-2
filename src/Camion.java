@@ -7,6 +7,53 @@
  *
  * @author luise
  */
-class Camion {
+public class Camion extends Vehiculo
+{
+
+    // Atributos 
+    private double capacidadCarga;
+    private int cantidadEjes;
+
+    // Constructor
+    public Camion (String codigo, String marca, String modelo, int anio, double precio, double capacidadCarga, int cantidadEjes)
+    {
+        super(codigo, marca, modelo, anio, precio);
+        setCapacidadCarga(capacidadCarga);
+        setCantidadEjes(cantidadEjes);
+    }
+
+    // Getters y Setters
+    public double getCapacidadCarga()
+    {
+        return capacidadCarga;
+    }
     
+    public void setCapacidadCarga(double capacidadCarga)
+    {
+        if (capacidadCarga <= 0) {
+            throw new IllegalArgumentException("La capacidad de carga debe ser mayor a 0");
+        }
+        this.capacidadCarga = capacidadCarga;
+    }
+
+    public double getCantidadEjes()
+    {
+        return cantidadEjes;
+    }
+
+    public void setCantidadEjes(int cantidadEjes)
+    {
+        if (cantidadEjes <= 0) {
+            throw new IllegalArgumentException("La capacidad de carga debe ser mayor a 0");
+        }
+        this.cantidadEjes = cantidadEjes;
+    }
+
+    // Mostrar detalles
+    @Override 
+    public String toString()
+    {
+        return "Capacidad de Carga: " + capacidadCarga + " Toneladas" +
+                "\nCantidad de Ejes: " + cantidadEjes;
+    }
 }
