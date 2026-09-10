@@ -10,14 +10,12 @@
 
 public class Vehiculo {
 
-    // Atributos comunes a todos los tipos de vehiculo (ver Tabla 1)
     private String codigo;
     private String marca;
     private String modelo;
     private int anio;
     private double precio;
 
-    // Constructor
     public Vehiculo(String codigo, String marca, String modelo, int anio, double precio) {
         this.codigo = codigo;
         this.marca = marca;
@@ -26,7 +24,6 @@ public class Vehiculo {
         this.precio = precio;
     }
 
-    // Getters y Setters
     public String getCodigo() {
         return codigo;
     }
