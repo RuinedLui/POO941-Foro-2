@@ -28,12 +28,15 @@ public class Main {
                     eliminarVehiculo();
                     break;
                 case 7:
+                    contarVehiculos();
+                    break;
+                case 8:
                     JOptionPane.showMessageDialog(null, "¡Hasta luego!");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida");
             }
-        } while (opcion != 7);
+        } while (opcion != 8);
     }
 
     private static int mostrarMenu() {
@@ -44,17 +47,12 @@ public class Main {
                 "4. Mostrar todos los vehículos\n" +
                 "5. Mostrar vehículos por tipo\n" +
                 "6. Eliminar vehículo\n" +
-                "7. Salir\n" +
+                "7. Contar vehículos registrados\n" +
+                "8. Salir\n" +
                 "Seleccione una opción:";
         try {
-            String entrada = JOptionPane.showInputDialog(menu);
-            if (entrada == null) {
-                // El usuario cerró el diálogo o presionó Cancelar
-                return 7;
-            }
-            return Integer.parseInt(entrada);
+            return Integer.parseInt(JOptionPane.showInputDialog(menu));
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error: Ingrese un número de opción válido");
             return 0;
         }
     }
@@ -110,8 +108,6 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Camión registrado exitosamente");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error de Validación", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -145,6 +141,8 @@ public class Main {
                 tipos,
                 tipos[0]);
 
+        if (seleccion == -1) return;
+
         String tipoSeleccionado = tipos[seleccion];
         StringBuilder sb = new StringBuilder("=== " + tipoSeleccionado.toUpperCase() + " ===\n\n");
         int contador = 0;
@@ -173,8 +171,9 @@ public class Main {
         }
 
         String codigo = JOptionPane.showInputDialog("Ingrese el código del vehículo a eliminar:");
-        boolean encontrado = false;
+        if (codigo == null) return; 
 
+        boolean encontrado = false;
         for (int i = 0; i < vehiculos.size(); i++) {
             if (vehiculos.get(i).getCodigo().equalsIgnoreCase(codigo)) {
                 vehiculos.remove(i);
@@ -187,5 +186,35 @@ public class Main {
         if (!encontrado) {
             JOptionPane.showMessageDialog(null, "No se encontró un vehículo con ese código");
         }
+    }
+
+    private static void contarVehiculos() {
+        if (vehiculos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay vehículos registrados.");
+            return;
+        }
+
+        int totalAutos = 0;
+        int totalMotos = 0;
+        int totalCamiones = 0;
+
+        for (Vehiculo v : vehiculos) {
+            if (v instanceof Automovil) {
+                totalAutos++;
+            } else if (v instanceof Motocicleta) {
+                totalMotos++;
+            } else if (v instanceof Camion) {
+                totalCamiones++;
+            }
+        }
+
+        String mensaje = "=== CONTEO DE VEHÍCULOS REGISTRADOS ===\n\n" +
+                "🚗 Automóviles: " + totalAutos + "\n" +
+                "🏍️ Motocicletas: " + totalMotos + "\n" +
+                "🚛 Camiones: " + totalCamiones + "\n" +
+                "─────────────────────\n" +
+                "📊 TOTAL: " + vehiculos.size() + " vehículos";
+
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 }
