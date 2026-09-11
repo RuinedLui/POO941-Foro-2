@@ -10,7 +10,7 @@
 public class Camion extends Vehiculo
 {
 
-    // Atributos 
+    // Atributos
     private double capacidadCarga;
     private int cantidadEjes;
 
@@ -27,7 +27,7 @@ public class Camion extends Vehiculo
     {
         return capacidadCarga;
     }
-    
+
     public void setCapacidadCarga(double capacidadCarga)
     {
         if (capacidadCarga <= 0) {
@@ -36,7 +36,7 @@ public class Camion extends Vehiculo
         this.capacidadCarga = capacidadCarga;
     }
 
-    public double getCantidadEjes()
+    public int getCantidadEjes()
     {
         return cantidadEjes;
     }
@@ -44,16 +44,17 @@ public class Camion extends Vehiculo
     public void setCantidadEjes(int cantidadEjes)
     {
         if (cantidadEjes <= 0) {
-            throw new IllegalArgumentException("La capacidad de carga debe ser mayor a 0");
+            throw new IllegalArgumentException("La cantidad de ejes debe ser mayor a 0");
         }
         this.cantidadEjes = cantidadEjes;
     }
 
     // Mostrar detalles
-    @Override 
+    @Override
     public String toString()
     {
-        return "Capacidad de Carga: " + capacidadCarga + " Toneladas" +
+        return super.toString() + 
+                "\nCapacidad de Carga: " + capacidadCarga + " Toneladas" +
                 "\nCantidad de Ejes: " + cantidadEjes;
     }
 }
