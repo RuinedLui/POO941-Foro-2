@@ -50,9 +50,15 @@ public class Main {
                 "7. Contar vehículos registrados\n" +
                 "8. Salir\n" +
                 "Seleccione una opción:";
+
+        String entrada = JOptionPane.showInputDialog(menu);
+
+        if (entrada == null) return 8; 
+
         try {
-            return Integer.parseInt(JOptionPane.showInputDialog(menu));
+            return Integer.parseInt(entrada);
         } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
             return 0;
         }
     }
@@ -60,16 +66,33 @@ public class Main {
     private static void registrarAutomovil() {
         try {
             String codigo = JOptionPane.showInputDialog("Ingrese código del automóvil:");
+            if (codigo == null) return;
+
             String marca = JOptionPane.showInputDialog("Ingrese marca:");
+            if (marca == null) return;
+
             String modelo = JOptionPane.showInputDialog("Ingrese modelo:");
-            int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese año:"));
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese precio:"));
-            int puertas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de puertas:"));
+            if (modelo == null) return;
+
+            String anioStr = JOptionPane.showInputDialog("Ingrese año:");
+            if (anioStr == null) return;
+            int anio = Integer.parseInt(anioStr);
+
+            String precioStr = JOptionPane.showInputDialog("Ingrese precio:");
+            if (precioStr == null) return;
+            double precio = Double.parseDouble(precioStr);
+
+            String puertasStr = JOptionPane.showInputDialog("Ingrese cantidad de puertas:");
+            if (puertasStr == null) return;
+            int puertas = Integer.parseInt(puertasStr);
+
             String combustible = JOptionPane.showInputDialog("Ingrese tipo de combustible:");
+            if (combustible == null) return;
 
             Automovil auto = new Automovil(codigo, marca, modelo, anio, precio, puertas, combustible);
             vehiculos.add(auto);
             JOptionPane.showMessageDialog(null, "Automóvil registrado exitosamente");
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
         }
@@ -78,16 +101,33 @@ public class Main {
     private static void registrarMotocicleta() {
         try {
             String codigo = JOptionPane.showInputDialog("Ingrese código de la motocicleta:");
+            if (codigo == null) return;
+
             String marca = JOptionPane.showInputDialog("Ingrese marca:");
+            if (marca == null) return;
+
             String modelo = JOptionPane.showInputDialog("Ingrese modelo:");
-            int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese año:"));
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese precio:"));
-            int cilindraje = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cilindraje (cc):"));
+            if (modelo == null) return;
+
+            String anioStr = JOptionPane.showInputDialog("Ingrese año:");
+            if (anioStr == null) return;
+            int anio = Integer.parseInt(anioStr);
+
+            String precioStr = JOptionPane.showInputDialog("Ingrese precio:");
+            if (precioStr == null) return;
+            double precio = Double.parseDouble(precioStr);
+
+            String cilindrajeStr = JOptionPane.showInputDialog("Ingrese cilindraje (cc):");
+            if (cilindrajeStr == null) return;
+            int cilindraje = Integer.parseInt(cilindrajeStr);
+
             String tipo = JOptionPane.showInputDialog("Ingrese tipo de motocicleta (Deportiva/Crucero/etc):");
+            if (tipo == null) return;
 
             Motocicleta moto = new Motocicleta(codigo, marca, modelo, anio, precio, cilindraje, tipo);
             vehiculos.add(moto);
             JOptionPane.showMessageDialog(null, "Motocicleta registrada exitosamente");
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
         }
@@ -96,21 +136,39 @@ public class Main {
     private static void registrarCamion() {
         try {
             String codigo = JOptionPane.showInputDialog("Ingrese código del camión:");
+            if (codigo == null) return;
+
             String marca = JOptionPane.showInputDialog("Ingrese marca:");
+            if (marca == null) return;
+
             String modelo = JOptionPane.showInputDialog("Ingrese modelo:");
-            int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese año:"));
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese precio:"));
-            double carga = Double.parseDouble(JOptionPane.showInputDialog("Ingrese capacidad de carga (toneladas):"));
-            int ejes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad de ejes:"));
+            if (modelo == null) return;
+
+            String anioStr = JOptionPane.showInputDialog("Ingrese año:");
+            if (anioStr == null) return;
+            int anio = Integer.parseInt(anioStr);
+
+            String precioStr = JOptionPane.showInputDialog("Ingrese precio:");
+            if (precioStr == null) return;
+            double precio = Double.parseDouble(precioStr);
+
+            String cargaStr = JOptionPane.showInputDialog("Ingrese capacidad de carga (toneladas):");
+            if (cargaStr == null) return;
+            double carga = Double.parseDouble(cargaStr);
+
+            String ejesStr = JOptionPane.showInputDialog("Ingrese cantidad de ejes:");
+            if (ejesStr == null) return;
+            int ejes = Integer.parseInt(ejesStr);
 
             Camion camion = new Camion(codigo, marca, modelo, anio, precio, carga, ejes);
             vehiculos.add(camion);
             JOptionPane.showMessageDialog(null, "Camión registrado exitosamente");
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese datos numéricos válidos");
         }
     }
-
+    
     private static void mostrarTodos() {
         if (vehiculos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay vehículos registrados");
@@ -163,7 +221,7 @@ public class Main {
         }
         JOptionPane.showMessageDialog(null, sb.toString());
     }
-
+    
     private static void eliminarVehiculo() {
         if (vehiculos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay vehículos registrados para eliminar");
@@ -171,7 +229,7 @@ public class Main {
         }
 
         String codigo = JOptionPane.showInputDialog("Ingrese el código del vehículo a eliminar:");
-        if (codigo == null) return; 
+        if (codigo == null) return;
 
         boolean encontrado = false;
         for (int i = 0; i < vehiculos.size(); i++) {
